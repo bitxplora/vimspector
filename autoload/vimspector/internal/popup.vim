@@ -24,6 +24,7 @@ function! vimspector#internal#popup#DisplaySplash( message ) abort
   return popup_dialog( a:message, {
         \ 'close': 'button',
         \ 'drag': 1,
+        \ 'border': [ 0, 0, 0, 0 ],
         \ } )
 endfunction
 
@@ -138,9 +139,13 @@ endfunction
 function! vimspector#internal#popup#SetBorderChars( config ) abort
   " When ambiwidth is single, use prettier characters for the border. This
   " would look silly when ambiwidth is double.
-  if &ambiwidth ==# 'single' && &encoding ==? 'utf-8'
-    let a:config[ 'borderchars' ] = [ '─', '│', '─', '│', '╭', '╮', '┛', '╰' ]
-  endif
+  " if &ambiwidth ==# 'single' && &encoding ==? 'utf-8'
+    " let a:config[ 'borderchars' ] = [ '─', '│', '─', '│', '╭', '╮', '┛', '╰' ]
+  " endif
+
+  " Removing the popup border and adding padding to prevent content from overlapiing.
+  let a:config[ 'border' ] = [ 0, 0, 0, 0 ]
+  let a:config[ 'padding' ] = [ 0, 2, 0, 2 ]
 
   return a:config
 endfunction
