@@ -145,7 +145,7 @@ function! vimspector#internal#popup#SetBorderChars( config ) abort
 
   " Removing the popup border and adding padding to prevent content from overlapiing.
   let a:config[ 'border' ] = [ 0, 0, 0, 0 ]
-  let a:config[ 'padding' ] = [ 0, 2, 0, 2 ]
+  let a:config[ 'padding' ] = [ 0, 1, 0, 1 ]
 
   return a:config
 endfunction
